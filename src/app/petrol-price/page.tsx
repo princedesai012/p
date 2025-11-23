@@ -26,16 +26,6 @@ export default function PetrolPricePage() {
         <h1 className="text-3xl font-bold tracking-tight text-primary">
           Petrol Price Today
         </h1>
-        <div className="relative w-full max-w-xs">
-           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          <Input
-            type="text"
-            placeholder="Search city..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10"
-          />
-        </div>
       </div>
       
       {filteredCities.length > 0 ? (

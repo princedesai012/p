@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { PriceCard } from '@/components/dashboard/price-card';
 import { FuelPriceCard } from '@/components/dashboard/fuel-price-card';
 import { lpgRates, fuelPrices } from '@/lib/data';
-import { Flame, Search } from 'lucide-react';
+import { Flame } from 'lucide-react';
 import type { PriceItem } from '@/lib/types';
 import { Input } from '@/components/ui/input';
 
@@ -32,16 +32,6 @@ export default function FuelPage() {
         <h1 className="text-3xl font-bold tracking-tight text-primary">
           Fuel & LPG Prices
         </h1>
-        <div className="relative w-full max-w-xs">
-           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          <Input
-            type="text"
-            placeholder="Search city..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10"
-          />
-        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
