@@ -17,7 +17,7 @@ const menuItems = [
   { href: '/silver-price', label: 'Silver Price', icon: Disc },
   { href: '/petrol-price', label: 'Petrol Price', icon: Fuel },
   { href: '/diesel-price', label: 'Diesel Price', icon: Droplets },
-  { href: '/lpg-price', label: 'LPG Price', icon: Flame },
+  { href: '/lpg-price', 'label': 'LPG Price', icon: Flame },
   { href: '/vegetables', label: 'Vegetable Prices', icon: Carrot },
   { href: '/onion-price', label: 'Onion Price', icon: Sprout },
   { href: '/crops', label: 'Crop Prices', icon: Wheat },
@@ -31,7 +31,7 @@ export function AppSidebar() {
       <SidebarMenu>
         {menuItems.map(({ href, label, icon: Icon }) => (
           <SidebarMenuItem key={href}>
-            <Link href={href} passHref legacyBehavior>
+            <Link href={href} passHref>
               <SidebarMenuButton
                 as="a"
                 isActive={pathname === href}
