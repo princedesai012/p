@@ -11,7 +11,11 @@ import { PriceCard } from '@/components/dashboard/price-card';
 import type { PriceItem } from '@/lib/types';
 import { ComparisonChart } from '@/components/dashboard/comparison-chart';
 import { FuelPriceCard } from '@/components/dashboard/fuel-price-card';
-import { Gem, Disc, Flame, Carrot } from 'lucide-react';
+import { Gem, Disc, Flame, Carrot, Fuel } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { SidebarProvider, Sidebar, SidebarTrigger, SidebarInset } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/layout/sidebar';
 
 const iconMap: { [key: string]: React.ElementType } = {
   'Gold 24K': Gem,
@@ -20,47 +24,67 @@ const iconMap: { [key: string]: React.ElementType } = {
   'LPG Cylinder': Flame,
   Onions: Carrot,
   Tomatoes: Carrot,
+  Petrol: Fuel,
+  Diesel: Fuel,
 };
 
 export default function Home() {
-  const allPrices: PriceItem[] = [
-    ...goldSilverRates,
-    ...lpgRates,
-    ...vegetableRates,
+  const featuredPrices: PriceItem[] = [
+    goldSilverRates[0], // Gold 24K
+    goldSilverRates[2], // Silver
+    lpgRates[0], // LPG
   ];
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex-1 animate-fade-in p-4 pt-8 md:p-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {allPrices.map((item) => (
-              <PriceCard
-                key={item.title}
-                title={item.title}
-                price={item.price}
-                unit={item.unit}
-                change={item.change}
-                Icon={iconMap[item.title]}
-                lastUpdated={new Date().toLocaleDateString('en-IN', {
-                  day: 'numeric',
-                  month: 'short',
-                  year: 'numeric',
-                })}
-              />
-            ))}
-            <div className="sm:col-span-2 lg:col-span-1">
-              <FuelPriceCard />
-            </div>
-          </div>
+    <SidebarProvider>
+      <Sidebar>
+        <AppSidebar />
+      </Sidebar>
+      <SidebarInset>
+        <div className="flex min-h-screen flex-col">
+          <Header>
+            <SidebarTrigger />
+          </Header>
+          <main className="flex-1 animate-fade-in p-4 pt-8 md:p-8">
+            <div className="mx-auto max-w-7xl">
+              <div className="mb-8 text-center">
+                <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
+                  Welcome to Bharat RateWatch
+                </h1>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  Your daily source for prices of essential commodities across India.
+                </p>
+              </div>
 
-          <div className="mt-8">
-            <ComparisonChart data={comparisonData} />
-          </div>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {featuredPrices.map((item) => (
+                  <PriceCard
+                    key={item.title}
+                    title={item.title}
+                    price={item.price}
+                    unit={item.unit}
+                    change={item.change}
+                    Icon={iconMap[item.title]}
+                    lastUpdated={new Date().toLocaleDateString('en-IN', {
+                      day: 'numeric',
+                      month: 'short',
+                      year: 'numeric',
+                    })}
+                  />
+                ))}
+                <div className="sm:col-span-2 lg:col-span-1">
+                  <FuelPriceCard />
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <ComparisonChart data={comparisonData} />
+              </div>
+            </div>
+          </main>
+          <Footer />
         </div>
-      </main>
-      <Footer />
-    </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
