@@ -7,20 +7,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Skeleton } from '@/components/ui/skeleton';
 import { getFormattedFuelPrice } from '@/lib/actions';
-import { fuelPrices } from '@/lib/data';
+import type { CityFuelPrices } from '@/lib/types';
 import { Fuel } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-
-const cities = Object.keys(fuelPrices);
 
 function FuelInfo({
   formattedData,
@@ -46,63 +37,47 @@ function FuelInfo({
   );
 }
 
-export function FuelPriceCard() {
-  const [selectedCity, setSelectedCity] = useState(cities[0]);
+interface FuelPriceCardProps {
+  city: string;
+  fuelData: CityFuelPrices[string];
+}
+
+export function FuelPriceCard({ city, fuelData }: FuelPriceCardProps) {
   const [petrolData, setPetrolData] = useState<string | null>(null);
   const [dieselData, setDieselData] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
     startTransition(async () => {
+      if (!city || !fuelData) return;
+
       setPetrolData(null);
       setDieselData(null);
 
-      if (!selectedCity || !fuelPrices[selectedCity]) return;
-
-      const cityData = fuelPrices[selectedCity];
-
       const [petrolResult, dieselResult] = await Promise.all([
         getFormattedFuelPrice(
-          selectedCity,
+          city,
           'Petrol',
-          cityData.petrol.raw
+          fuelData.petrol.raw
         ),
         getFormattedFuelPrice(
-          selectedCity,
+          city,
           'Diesel',
-          cityData.diesel.raw
+          fuelData.diesel.raw
         ),
       ]);
       setPetrolData(petrolResult);
       setDieselData(dieselResult);
     });
-  }, [selectedCity]);
+  }, [city, fuelData]);
 
   return (
     <Card className="flex h-full transform flex-col shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1">
       <CardHeader>
         <CardTitle className="flex items-center justify-between text-base font-medium">
-          <span>Fuel Prices</span>
+          <span>{city}</span>
           <Fuel className="h-6 w-6 text-muted-foreground" />
         </CardTitle>
-        <div className="pt-2">
-          <Select
-            defaultValue={selectedCity}
-            onValueChange={setSelectedCity}
-            disabled={isPending}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select a city" />
-            </SelectTrigger>
-            <SelectContent>
-              {cities.map((city) => (
-                <SelectItem key={city} value={city}>
-                  {city}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
       </CardHeader>
       <CardContent className="flex flex-1 flex-col justify-around space-y-4">
         <div>

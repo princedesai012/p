@@ -50,96 +50,120 @@ export const fuelPrices: CityFuelPrices = {
     petrol: {
       price: 94.72,
       change: 0,
-      raw: JSON.stringify({
-        price: 94.72,
-        currency: 'INR',
-        unit: 'litre',
-        last_updated: '2024-07-28T06:00:00Z',
-        source: 'delhi_oil_co_api_v1',
-      }),
+      raw: JSON.stringify({ price: 94.72, last_updated: '2024-07-28T06:00:00Z' }),
     },
     diesel: {
       price: 87.62,
       change: 0,
-      raw: JSON.stringify({
-        price: 87.62,
-        currency: 'INR',
-        unit: 'litre',
-        last_updated: '2024-07-28T06:00:00Z',
-        source: 'delhi_oil_co_api_v1',
-      }),
+      raw: JSON.stringify({ price: 87.62, last_updated: '2024-07-28T06:00:00Z' }),
     },
   },
   Mumbai: {
     petrol: {
       price: 104.21,
       change: 0,
-      raw: JSON.stringify({
-        price: 104.21,
-        currency: 'INR',
-        unit: 'litre',
-        last_updated: '2024-07-28T06:00:00Z',
-        source: 'mumbai_petroleum_data_feed',
-      }),
+      raw: JSON.stringify({ price: 104.21, last_updated: '2024-07-28T06:00:00Z' }),
     },
     diesel: {
       price: 92.15,
       change: 0,
-      raw: JSON.stringify({
-        price: 92.15,
-        currency: 'INR',
-        unit: 'litre',
-        last_updated: '2024-07-28T06:00:00Z',
-        source: 'mumbai_petroleum_data_feed',
-      }),
+      raw: JSON.stringify({ price: 92.15, last_updated: '2024-07-28T06:00:00Z' }),
     },
   },
   Bengaluru: {
     petrol: {
       price: 102.86,
       change: 0,
-      raw: JSON.stringify({
-        price: 102.86,
-        currency: 'INR',
-        unit: 'litre',
-        last_updated: '2024-07-28T06:00:00Z',
-        source: 'bengaluru_fuel_services_json',
-      }),
+      raw: JSON.stringify({ price: 102.86, last_updated: '2024-07-28T06:00:00Z' }),
     },
     diesel: {
       price: 88.94,
       change: 0,
-      raw: JSON.stringify({
-        price: 88.94,
-        currency: 'INR',
-        unit: 'litre',
-        last_updated: '2024-07-28T06:00:00Z',
-        source: 'bengaluru_fuel_services_json',
-      }),
+      raw: JSON.stringify({ price: 88.94, last_updated: '2024-07-28T06:00:00Z' }),
     },
   },
   Chennai: {
     petrol: {
       price: 100.75,
       change: 0,
-      raw: JSON.stringify({
-        price: 100.75,
-        currency: 'INR',
-        unit: 'litre',
-        last_updated: '2024-07-28T06:00:00Z',
-        source: 'chennai_daily_rates_v3',
-      }),
+      raw: JSON.stringify({ price: 100.75, last_updated: '2024-07-28T06:00:00Z' }),
     },
     diesel: {
       price: 92.34,
       change: 0,
-      raw: JSON.stringify({
-        price: 92.34,
-        currency: 'INR',
-        unit: 'litre',
-        last_updated: '2024-07-28T06:00:00Z',
-        source: 'chennai_daily_rates_v3',
-      }),
+      raw: JSON.stringify({ price: 92.34, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+  },
+  Kolkata: {
+    petrol: {
+      price: 103.94,
+      change: 0,
+      raw: JSON.stringify({ price: 103.94, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+    diesel: {
+      price: 90.76,
+      change: 0,
+      raw: JSON.stringify({ price: 90.76, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+  },
+  Hyderabad: {
+    petrol: {
+      price: 107.41,
+      change: 0,
+      raw: JSON.stringify({ price: 107.41, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+    diesel: {
+      price: 95.65,
+      change: 0,
+      raw: JSON.stringify({ price: 95.65, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+  },
+  Pune: {
+    petrol: {
+      price: 103.58,
+      change: 0,
+      raw: JSON.stringify({ price: 103.58, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+    diesel: {
+      price: 90.11,
+      change: 0,
+      raw: JSON.stringify({ price: 90.11, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+  },
+  Ahmedabad: {
+    petrol: {
+      price: 94.44,
+      change: 0,
+      raw: JSON.stringify({ price: 94.44, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+    diesel: {
+      price: 90.11,
+      change: 0,
+      raw: JSON.stringify({ price: 90.11, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+  },
+  Jaipur: {
+    petrol: {
+      price: 104.88,
+      change: 0,
+      raw: JSON.stringify({ price: 104.88, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+    diesel: {
+      price: 90.36,
+      change: 0,
+      raw: JSON.stringify({ price: 90.36, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+  },
+  Lucknow: {
+    petrol: {
+      price: 94.65,
+      change: 0,
+      raw: JSON.stringify({ price: 94.65, last_updated: '2024-07-28T06:00:00Z' }),
+    },
+    diesel: {
+      price: 87.76,
+      change: 0,
+      raw: JSON.stringify({ price: 87.76, last_updated: '2024-07-28T06:00:00Z' }),
     },
   },
 };
