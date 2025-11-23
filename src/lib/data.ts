@@ -43,7 +43,41 @@ export const vegetableRates: PriceItem[] = [
     unit: 'per kg',
     change: -5,
   },
+  {
+    title: 'Potatoes',
+    price: 30,
+    unit: 'per kg',
+    change: 1.0,
+  }
 ];
+
+export const cropRates: PriceItem[] = [
+  {
+    title: 'Wheat',
+    price: 2400,
+    unit: 'per quintal',
+    change: 50,
+  },
+  {
+    title: 'Rice',
+    price: 3500,
+    unit: 'per quintal',
+    change: -25,
+  },
+  {
+    title: 'Cotton',
+    price: 7500,
+    unit: 'per quintal',
+    change: 100,
+  },
+  {
+    title: 'Sugar',
+    price: 42,
+    unit: 'per kg',
+    change: 0.5,
+  },
+];
+
 
 export const fuelPrices: CityFuelPrices = {
   Delhi: {

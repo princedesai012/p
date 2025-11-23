@@ -40,9 +40,16 @@ function FuelInfo({
 interface FuelPriceCardProps {
   city: string;
   fuelData: CityFuelPrices[string];
+  showPetrol?: boolean;
+  showDiesel?: boolean;
 }
 
-export function FuelPriceCard({ city, fuelData }: FuelPriceCardProps) {
+export function FuelPriceCard({ 
+  city, 
+  fuelData, 
+  showPetrol = true, 
+  showDiesel = true 
+}: FuelPriceCardProps) {
   const [petrolData, setPetrolData] = useState<string | null>(null);
   const [dieselData, setDieselData] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -51,25 +58,27 @@ export function FuelPriceCard({ city, fuelData }: FuelPriceCardProps) {
     startTransition(async () => {
       if (!city || !fuelData) return;
 
-      setPetrolData(null);
-      setDieselData(null);
+      if(showPetrol) {
+        setPetrolData(null);
+        const petrolResult = await getFormattedFuelPrice(
+            city,
+            'Petrol',
+            fuelData.petrol.raw
+        );
+        setPetrolData(petrolResult);
+      }
 
-      const [petrolResult, dieselResult] = await Promise.all([
-        getFormattedFuelPrice(
-          city,
-          'Petrol',
-          fuelData.petrol.raw
-        ),
-        getFormattedFuelPrice(
-          city,
-          'Diesel',
-          fuelData.diesel.raw
-        ),
-      ]);
-      setPetrolData(petrolResult);
-      setDieselData(dieselResult);
+      if(showDiesel) {
+        setDieselData(null);
+        const dieselResult = await getFormattedFuelPrice(
+            city,
+            'Diesel',
+            fuelData.diesel.raw
+        );
+        setDieselData(dieselResult);
+      }
     });
-  }, [city, fuelData]);
+  }, [city, fuelData, showPetrol, showDiesel]);
 
   return (
     <Card className="flex h-full transform flex-col shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1">
@@ -80,15 +89,19 @@ export function FuelPriceCard({ city, fuelData }: FuelPriceCardProps) {
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-1 flex-col justify-around space-y-4">
-        <div>
-          <h4 className="mb-2 font-semibold">Petrol</h4>
-          <FuelInfo formattedData={petrolData} isLoading={isPending} />
-        </div>
-        <Separator />
-        <div>
-          <h4 className="mb-2 font-semibold">Diesel</h4>
-          <FuelInfo formattedData={dieselData} isLoading={isPending} />
-        </div>
+        {showPetrol && (
+          <div>
+            <h4 className="mb-2 font-semibold">Petrol</h4>
+            <FuelInfo formattedData={petrolData} isLoading={isPending} />
+          </div>
+        )}
+        {showPetrol && showDiesel && <Separator />}
+        {showDiesel && (
+          <div>
+            <h4 className="mb-2 font-semibold">Diesel</h4>
+            <FuelInfo formattedData={dieselData} isLoading={isPending} />
+          </div>
+        )}
       </CardContent>
     </Card>
   );

@@ -6,20 +6,18 @@ import {
   lpgRates,
   vegetableRates,
   comparisonData,
+  fuelPrices,
 } from '@/lib/data';
 import { PriceCard } from '@/components/dashboard/price-card';
 import type { PriceItem } from '@/lib/types';
 import { ComparisonChart } from '@/components/dashboard/comparison-chart';
 import { FuelPriceCard } from '@/components/dashboard/fuel-price-card';
 import { Gem, Disc, Flame, Carrot, Fuel } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { SidebarProvider, Sidebar, SidebarTrigger, SidebarInset } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/layout/sidebar';
 
 const iconMap: { [key: string]: React.ElementType } = {
   'Gold 24K': Gem,
-  'Gold 22K': Gem,
   Silver: Disc,
   'LPG Cylinder': Flame,
   Onions: Carrot,
@@ -72,8 +70,8 @@ export default function Home() {
                     })}
                   />
                 ))}
-                <div className="sm:col-span-2 lg:col-span-1">
-                  <FuelPriceCard />
+                 <div className="sm:col-span-2 lg:col-span-1">
+                   <FuelPriceCard city="Mumbai" fuelData={fuelPrices["Mumbai"]} />
                 </div>
               </div>
 
