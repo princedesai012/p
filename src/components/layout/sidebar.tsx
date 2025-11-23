@@ -7,7 +7,7 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from '@/components/ui/sidebar';
-import { Home, Gem, Fuel, Carrot, Disc, Flame, Droplets, Wheat, Sprout, ShoppingBasket } from 'lucide-react';
+import { Home, Gem, Fuel, Carrot, Disc, Flame, Droplets, Wheat, Sprout } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -31,15 +31,18 @@ export function AppSidebar() {
       <SidebarMenu>
         {menuItems.map(({ href, label, icon: Icon }) => (
           <SidebarMenuItem key={href}>
-            <SidebarMenuButton
-              as={Link}
-              href={href}
-              isActive={pathname === href}
-              tooltip={label}
-            >
-              <Icon />
-              <span>{label}</span>
-            </SidebarMenuButton>
+            <Link href={href} passHref>
+              <SidebarMenuButton
+                asChild
+                isActive={pathname === href}
+                tooltip={label}
+              >
+                <div>
+                  <Icon />
+                  <span>{label}</span>
+                </div>
+              </SidebarMenuButton>
+            </Link>
           </SidebarMenuItem>
         ))}
       </SidebarMenu>
