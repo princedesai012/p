@@ -31,9 +31,9 @@ export function AppSidebar() {
       <SidebarMenu>
         {menuItems.map(({ href, label, icon: Icon }) => (
           <SidebarMenuItem key={href}>
-            <Link href={href} passHref>
+            <Link href={href} passHref legacyBehavior>
               <SidebarMenuButton
-                asChild
+                as="a"
                 isActive={pathname === href}
                 tooltip={label}
               >

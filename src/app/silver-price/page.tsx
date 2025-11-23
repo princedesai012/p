@@ -1,8 +1,14 @@
-
 import React from 'react';
 import { PriceCard } from '@/components/dashboard/price-card';
 import { goldSilverRates } from '@/lib/data';
 import { Disc } from 'lucide-react';
+
+const lastUpdated = new Date('2024-07-28T06:00:00Z').toLocaleDateString('en-IN', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+
 
 export default function SilverPricePage() {
   const silverRate = goldSilverRates.find(item => item.title === 'Silver');
@@ -21,11 +27,7 @@ export default function SilverPricePage() {
             unit={silverRate.unit}
             change={silverRate.change}
             Icon={Disc}
-            lastUpdated={new Date().toLocaleDateString('en-IN', {
-              day: 'numeric',
-              month: 'short',
-              year: 'numeric',
-            })}
+            lastUpdated={lastUpdated}
           />
         </div>
       )}

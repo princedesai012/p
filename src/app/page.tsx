@@ -4,7 +4,6 @@ import { Footer } from '@/components/layout/footer';
 import {
   goldSilverRates,
   lpgRates,
-  vegetableRates,
   comparisonData,
   fuelPrices,
 } from '@/lib/data';
@@ -25,6 +24,12 @@ const iconMap: { [key: string]: React.ElementType } = {
   Petrol: Fuel,
   Diesel: Fuel,
 };
+
+const lastUpdated = new Date('2024-07-28T06:00:00Z').toLocaleDateString('en-IN', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
 
 export default function Home() {
   const featuredPrices: PriceItem[] = [
@@ -63,11 +68,7 @@ export default function Home() {
                     unit={item.unit}
                     change={item.change}
                     Icon={iconMap[item.title]}
-                    lastUpdated={new Date().toLocaleDateString('en-IN', {
-                      day: 'numeric',
-                      month: 'short',
-                      year: 'numeric',
-                    })}
+                    lastUpdated={lastUpdated}
                   />
                 ))}
                  <div className="sm:col-span-2 lg:col-span-1">

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PriceCard } from '@/components/dashboard/price-card';
 import { cropRates } from '@/lib/data';
@@ -11,6 +10,12 @@ const iconMap: { [key: string]: React.ElementType } = {
   Cotton: Sprout,
   Sugar: Sprout,
 };
+
+const lastUpdated = new Date('2024-07-28T06:00:00Z').toLocaleDateString('en-IN', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
 
 export default function CropsPage() {
   return (
@@ -27,11 +32,7 @@ export default function CropsPage() {
             unit={item.unit}
             change={item.change}
             Icon={iconMap[item.title]}
-            lastUpdated={new Date().toLocaleDateString('en-IN', {
-              day: 'numeric',
-              month: 'short',
-              year: 'numeric',
-            })}
+            lastUpdated={lastUpdated}
           />
         ))}
       </div>

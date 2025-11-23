@@ -10,6 +10,12 @@ const iconMap: { [key: string]: React.ElementType } = {
   Silver: Disc,
 };
 
+const lastUpdated = new Date('2024-07-28T06:00:00Z').toLocaleDateString('en-IN', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+
 export default function MetalsPage() {
   return (
     <div>
@@ -25,11 +31,7 @@ export default function MetalsPage() {
             unit={item.unit}
             change={item.change}
             Icon={iconMap[item.title]}
-            lastUpdated={new Date().toLocaleDateString('en-IN', {
-              day: 'numeric',
-              month: 'short',
-              year: 'numeric',
-            })}
+            lastUpdated={lastUpdated}
           />
         ))}
       </div>

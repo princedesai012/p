@@ -1,6 +1,7 @@
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { AppSidebar } from '@/components/layout/sidebar';
+import { BackButton } from '@/components/ui/back-button';
 import {
   Sidebar,
   SidebarInset,
@@ -24,7 +25,12 @@ export default function PagesLayout({
             <SidebarTrigger />
           </Header>
           <main className="flex-1 animate-fade-in p-4 pt-8 md:p-8">
-            <div className="mx-auto max-w-7xl">{children}</div>
+            <div className="mx-auto max-w-7xl">
+              <div className="mb-4">
+                <BackButton />
+              </div>
+              {children}
+              </div>
           </main>
           <Footer />
         </div>

@@ -1,8 +1,13 @@
-
 import React from 'react';
 import { PriceCard } from '@/components/dashboard/price-card';
 import { lpgRates } from '@/lib/data';
 import { Flame } from 'lucide-react';
+
+const lastUpdated = new Date('2024-07-28T06:00:00Z').toLocaleDateString('en-IN', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
 
 export default function LpgPricePage() {
   return (
@@ -19,11 +24,7 @@ export default function LpgPricePage() {
             unit={item.unit}
             change={item.change}
             Icon={Flame}
-            lastUpdated={new Date().toLocaleDateString('en-IN', {
-              day: 'numeric',
-              month: 'short',
-              year: 'numeric',
-            })}
+            lastUpdated={lastUpdated}
           />
         ))}
       </div>

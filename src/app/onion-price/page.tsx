@@ -1,8 +1,13 @@
-
 import React from 'react';
 import { PriceCard } from '@/components/dashboard/price-card';
 import { vegetableRates } from '@/lib/data';
 import { Sprout } from 'lucide-react';
+
+const lastUpdated = new Date('2024-07-28T06:00:00Z').toLocaleDateString('en-IN', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
 
 export default function OnionPricePage() {
   const onionRate = vegetableRates.find(item => item.title === 'Onions');
@@ -21,11 +26,7 @@ export default function OnionPricePage() {
             unit={onionRate.unit}
             change={onionRate.change}
             Icon={Sprout}
-            lastUpdated={new Date().toLocaleDateString('en-IN', {
-              day: 'numeric',
-              month: 'short',
-              year: 'numeric',
-            })}
+            lastUpdated={lastUpdated}
           />
         </div>
       )}
