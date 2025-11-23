@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   description:
     'Get real-time daily prices for gold, silver, petrol, diesel, LPG, and vegetables in India. Your one-stop destination for daily rate checks.',
   keywords: 'gold rate, silver rate, petrol price, diesel price, lpg price, india, daily prices',
+  other: {
+    "google-adsense-account": "ca-pub-8056938512195354"
+  }
 };
 
 export default function RootLayout({
