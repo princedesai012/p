@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Bharat RateWatch - Daily Prices for Gold, Silver, Fuel & More',
@@ -25,6 +26,8 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased bg-background">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8056938512195354"
+           crossorigin="anonymous"></script>
         {children}
         <Toaster />
       </body>
